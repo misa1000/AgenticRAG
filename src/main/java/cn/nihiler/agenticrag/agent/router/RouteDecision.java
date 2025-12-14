@@ -1,5 +1,6 @@
 package cn.nihiler.agenticrag.agent.router;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +26,14 @@ public class RouteDecision {
     private Double confidence;
 
     /**
-     * 决策理由（可选，用于调试）
+     * 决策理由（用于调试和日志）
      */
     private String reason;
-}
 
+    /**
+     * FAQ答案（仅当routeType=FAQ时有值）
+     * JsonIgnore: 这个字段不参与LLM的JSON解析
+     */
+    @JsonIgnore
+    private String faqAnswer;
+}
