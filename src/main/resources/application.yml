@@ -29,11 +29,11 @@ spring:
   # ==================== Spring AI 配置 ====================
   ai:
     openai:
-      api-key: ${OPENAI_API_KEY:your-api-key}
-      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      api-key: ${DEEP_SEEK_KEYS}
+      base-url: https://api.deepseek.com
       chat:
         options:
-          model: gpt-4o
+          model: deepseek-chat
           temperature: 0.7
       embedding:
         options:
@@ -68,6 +68,11 @@ agentic:
     # 语义路由配置
     router:
       enabled: true
+    # FAQ配置
+    faq:
+      enabled: true
+      similarity-threshold: 0.85  # 相似度阈值，超过此值认为命中FAQ
+      store-path: ./data/faq-vectors.json  # FAQ向量存储路径
     # 自省重试次数
     reflection:
       max-retries: 3
@@ -78,9 +83,13 @@ agentic:
       base-url: https://api.tavily.com
 
 # ==================== 日志配置 ====================
+# 详细配置见 logback-spring.xml
 logging:
   level:
+    root: INFO
     cn.nihiler.agenticrag: DEBUG
     org.springframework.ai: DEBUG
+  file:
+    path: ./logs
 
 

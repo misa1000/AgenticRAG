@@ -8,24 +8,27 @@ package cn.nihiler.agenticrag.agent.router;
 public enum RouteType {
 
     /**
-     * 向量检索 - 查询历史文档/知识库
+     * FAQ匹配 - 命中预设的常见问题
      */
-    VECTOR_STORE,
+    FAQ,
+
+    /**
+     * 向量检索/RAG - 查询历史文档/知识库
+     */
+    RAG,
 
     /**
      * SQL查询 - 查询结构化业务数据
      */
-    SQL_DATABASE,
+    DATABASE,
 
     /**
      * Web搜索 - 查询即时新闻/实时信息
      */
-    WEB_SEARCH,
+    SEARCH,
 
     /**
      * 直接回答 - 简单问候/闲聊，无需检索
      */
-    DIRECT_ANSWER
+    DIRECT
 }
-
-
